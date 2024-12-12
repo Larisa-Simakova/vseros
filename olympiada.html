@@ -19,7 +19,8 @@
                 <a href="./" class="header__logo"><img src="./img/logo.svg" alt=""></a>
                 <nav class="header__body">
                     <ul class="header__list">
-                        <li class="header__item"><a href="./olympiada.html" class="header__link link active">Олимпиада</a></li>
+                        <li class="header__item"><a href="./olympiada.html"
+                                class="header__link link active">Олимпиада</a></li>
                         <li class="header__item"><a href="./rating.html" class="header__link link">Рейтинг</a></li>
                         <li class="header__item"><a href="./prices.html" class="header__link link">Призовой фонд</a>
                         </li>
@@ -97,7 +98,7 @@
                                     творческих конкурсов.</p>
                             </div>
                         </div>
-                        <div class="accordion-item">
+                        <div class="accordion-item" id="prize">
                             <div class="accordion-header">
                                 <p class="text-main">Призовой фонд и распределение средств</p>
                                 <span class="icon">
@@ -251,13 +252,30 @@
                 header.addEventListener('click', () => {
                     const accordionItem = header.parentElement;
                     const isActive = accordionItem.classList.contains('active');
-                    document.querySelectorAll('.accordion-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    if (!isActive) {
-                        accordionItem.classList.add('active');
+                    if (isActive) {
+                        accordionItem.classList.remove('active');
+                    } else {
+                        document.querySelectorAll('.accordion-item').forEach(item => {
+                            if (item !== accordionItem) {
+                                item.classList.remove('active');
+                            }
+                        });
+
+                        setTimeout(() => {
+                            accordionItem.classList.add('active');
+                        }, 200);
                     }
                 });
+            });
+
+            document.addEventListener("DOMContentLoaded", function () {
+                const urlHash = window.location.hash;
+                if (urlHash) {
+                    const accordionItem = document.querySelector(urlHash);
+                    if (accordionItem) {
+                        accordionItem.classList.add("active");
+                    }
+                }
             });
         </script>
     </div>

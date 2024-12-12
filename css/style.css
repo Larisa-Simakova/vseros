@@ -2367,7 +2367,7 @@ textarea.input {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 1em;
   text-align: center;
   font-size: 2.4em;
   padding: 0.75em 1.5em;
@@ -2377,6 +2377,14 @@ textarea.input {
   background: var(--white);
   border: 1px solid var(--white);
 }
+
+@media (max-width: 370px) {
+  .form-lk__info {
+    gap: .5em;
+    padding: 0.6em;
+  }
+}
+
 
 .form-lk__info span {
   width: 1.375em;
@@ -3150,7 +3158,7 @@ tr {
 .accordion-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1s ease, padding 1s ease;
+  transition: max-height .7s ease, padding .7s ease;
 }
 
 .accordion-item.active .accordion-content {
